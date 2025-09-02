@@ -70,6 +70,16 @@ h2{font-size:27px;margin:0 0 10px}
 .footer-grid .foot-links{display:flex;gap:14px;color:#3f454b}
 .muted{color:#6a7076}
 
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
 /* Form + inputs (investors page) */
 label{display:block;margin:8px 0 0 0;font-size:14px;color:#3f454b}
 input,textarea{width:100%;margin-top:6px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 12px;color:var(--text);outline:none}

@@ -30,8 +30,8 @@
   <main>
     <section class="hero">
       <div class="container hero-inner">
-        <h1>Request the teaser</h1>
-        <p class="lede">Introduce yourself and how you prefer to engage. We'll send a 1‑pager and a short narrative teaser.</p>
+        <h1>Request the intro deck</h1>
+        <p class="lede">Introduce yourself and how you prefer to engage. We’ll send our latest intro deck and a link to book time.</p>
       </div>
       <div class="hero-bg" aria-hidden="true"></div>
     </section>
@@ -40,15 +40,23 @@
       <div class="container hero-inner2">
         <div class="card">
           <h3>Introduce your contact</h3>
-          <p class="section-copy">Share a few details and we'll reply with the latest teaser and a link to book time.</p>
+          <p class="section-copy">Share a few details and we’ll reply with the intro deck and next steps.</p>
           <form id="investor-form">
+			<!-- Honeypot trap (hidden off-screen) -->
+			<div class="hp-field" aria-hidden="true">
+				<label>Leave this field empty
+					<input type="text" name="company_website" tabindex="-1" autocomplete="off">
+				</label>
+			</div>
+			<!-- Timestamp to measure human fill time -->
+			<input type="hidden" name="form_started_at" id="form_started_at">
             <label>Full Name<br><input name="name" required placeholder="Alex Example"></label>
             <label>Firm / Affiliation<br><input name="firm" placeholder="Example Capital"></label>
             <label>Role<br><input name="role" placeholder="Partner, Principal, Angel..."></label>
             <label>Email<br><input name="email" type="email" required placeholder="alex@example.com"></label>
             <label>Notes (optional)<br><textarea name="notes" rows="4" placeholder="Focus, typical check size, stage…"></textarea></label>
             <div class="hero-ctas" style="margin-top:10px">
-              <button class="btn primary" type="submit">Request teaser</button>
+              <button class="btn primary" type="submit">Request deck</button>
             </div>
             <p class="muted" style="margin-top:8px">No spam. We use your info only to respond with our teaser.</p>
           </form>
