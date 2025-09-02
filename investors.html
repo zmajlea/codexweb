@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodexOne — Investors</title>
+  <meta name="description" content="Request CodexOne's investor teaser. Introduce yourself or your firm and we'll share the short deck.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="/" class="brand"><span class="brand-mark">codex</span><span class="brand-accent">one</span></a>
+      <input id="nav-toggle" type="checkbox" aria-label="Toggle navigation">
+      <label class="burger" for="nav-toggle" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </label>
+      <nav class="menu">
+        <a href="/#product">Product</a>
+        <a href="/#engine">Engine</a>
+        <a href="/#artifacts">Artifacts</a>
+        <a href="/#roadmap">Roadmap</a>
+        <a href="investors.html" class="cta">Investors</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Investors</p>
+        <h1>Request the teaser</h1>
+        <p class="lede">Introduce yourself and how you prefer to engage. We'll send a 1‑pager and a short narrative teaser.</p>
+      </div>
+      <div class="hero-bg" aria-hidden="true"></div>
+    </section>
+
+    <section>
+      <div class="container grid two">
+        <div class="card">
+          <h3>Introduce your contact</h3>
+          <p class="section-copy">Share a few details and we'll reply with the latest teaser and a link to book time.</p>
+          <form id="investor-form">
+            <label>Full Name<br><input name="name" required placeholder="Alex Example"></label>
+            <label>Firm / Affiliation<br><input name="firm" placeholder="Example Capital"></label>
+            <label>Role<br><input name="role" placeholder="Partner, Principal, Angel..."></label>
+            <label>Email<br><input name="email" type="email" required placeholder="alex@example.com"></label>
+            <label>Notes (optional)<br><textarea name="notes" rows="4" placeholder="Focus, typical check size, stage…"></textarea></label>
+            <div class="hero-ctas" style="margin-top:10px">
+              <button class="btn primary" type="submit">Request teaser</button>
+              <a class="btn ghost" href="mailto:contact@codexone.io?subject=Teaser%20request&body=Hi%20CodexOne%2C%0A%0AName%3A%20%0AFirm%3A%20%0ARole%3A%20%0AEmail%3A%20%0ANotes%3A%20%0A">Email instead</a>
+            </div>
+            <p class="muted" style="margin-top:8px">No spam. We use your info only to respond with our teaser.</p>
+          </form>
+        </div>
+        <div>
+          <h3>What you'll get</h3>
+          <ul class="tight">
+            <li>1‑page overview of the problem, product, and traction plan.</li>
+            <li>Short teaser deck for context and discussion.</li>
+            <li>Invite link to schedule time with the team.</li>
+          </ul>
+          <div class="card" style="margin-top:12px">
+            <h3>Round details</h3>
+            <ul class="tight">
+              <li>Pre‑Seed: $1–1.5M target.</li>
+              <li>Valuation: ~${chr(36)}20M.</li>
+              <li>Use of funds: MVP + early pilots, governance engine hardening.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="/" class="brand small"><span class="brand-mark">codex</span><span class="brand-accent">one</span></a>
+        <p class="muted">© 2025 CodexOne. All rights reserved.</p>
+      </div>
+      <div class="foot-links">
+        <a href="/#product">Product</a>
+        <a href="/#engine">Engine</a>
+        <a href="/#artifacts">Artifacts</a>
+        <a href="/#roadmap">Roadmap</a>
+        <a href="mailto:contact@codexone.io">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
