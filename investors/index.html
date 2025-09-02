@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investor Access</title>
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .gate{max-width:520px;margin:56px auto;background:var(--card);padding:20px;border:1px solid var(--border);border-radius:16px}
+    .gate input[type=password]{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fff;color:#111;margin-top:8px}
+    .hint{color:var(--muted);font-size:.92rem;margin-top:8px}
+    .hidden{display:none}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../">Brand</a>
+      <nav><a href="../#about">About</a><a href="../#features">Features</a></nav>
+    </div>
+  </header>
+  <main class="container">
+    <div class="gate" id="gate">
+      <h1>Investor Materials</h1>
+      <p>Enter the password to access the teaser deck. If you have a QR invite, just scan it and this page will unlock automatically.</p>
+      <label for="pass">Password</label>
+      <input id="pass" type="password" placeholder="Password" autocomplete="off">
+      <div class="cta-row" style="margin-top:12px;">
+        <button class="btn primary" onclick="unlock()">Unlock</button>
+      </div>
+      <p class="hint">Questions? Email <a href="mailto:info@example.com">info@example.com</a>.</p>
+    </div>
+
+    <div id="content" class="hidden">
+      <h2>Teaser Deck</h2>
+      <p><a href="teaser.pdf" class="btn">Download PDF</a></p>
+      <p class="fineprint">Please keep this confidential. Not an offer to sell securities.</p>
+    </div>
+  </main>
+  <script>
+    const HASH = "057ba03d6c44104863dc7361fe4578965d1887360f90a0895882e58a6248fc86"; // sha256('changeme') – replace after you set a real password
+    const KEY = "INVITE-KEY-CHANGE-ME"; // QR invite key for auto-unlock (edit to your value)
+
+    async function sha256(s) { 
+      const b = new TextEncoder().encode(s);
+      const h = await crypto.subtle.digest('SHA-256', b);
+      return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('');
+    }
+    function showContent(){
+      document.getElementById('gate').classList.add('hidden');
+      document.getElementById('content').classList.remove('hidden');
+    }
+    async function unlock(){
+      const pass = document.getElementById('pass').value;
+      if (!pass) return;
+      const digest = await sha256(pass);
+      if (digest === HASH) showContent();
+      else alert('Incorrect password.');
+    }
+    // QR auto-unlock: example URL /investors/?k=YOURKEY
+    const params = new URLSearchParams(location.search);
+    if (params.get('k') === KEY) showContent();
+  </script>
+</body>
+</html>

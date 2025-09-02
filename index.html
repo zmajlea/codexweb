@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site Title</title>
+  <meta name="description" content="One-line description for SEO.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#">Brand</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="investors/">Investors</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Headline that says exactly what you do</h1>
+        <p class="lead">One short, specific sentence that makes a promise. Avoid fluff.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Get updates</a>
+          <a class="btn" href="#features">Learn more</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="images/hero.jpg" alt="Product or brand visual">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container grid-2">
+      <div>
+        <h2>About</h2>
+        <p>State your value prop in plain language. Who is this for, and what outcome do they get?</p>
+      </div>
+      <div>
+        <img src="images/about.jpg" alt="About image">
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section alt">
+    <div class="container cards">
+      <article class="card">
+        <img src="images/feature-1.jpg" alt="Feature 1">
+        <h3>Feature One</h3>
+        <p>One sentence explaining why this matters.</p>
+      </article>
+      <article class="card">
+        <img src="images/feature-2.jpg" alt="Feature 2">
+        <h3>Feature Two</h3>
+        <p>Outcome-focused statement. Keep it concrete.</p>
+      </article>
+      <article class="card">
+        <img src="images/feature-3.jpg" alt="Feature 3">
+        <h3>Feature Three</h3>
+        <p>Who benefits and how. No buzzwords.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Get updates</h2>
+      <p>Sign up for news, product drops, and investor-day announcements.</p>
+      <form id="newsletter" class="form" method="post"
+        action="https://buttondown.email/api/emails/embed-subscribe/YOUR_BUTTONDOWN_USERNAME"
+        target="popupwindow" onsubmit="return newsletterSubmit(event)">
+        <div class="form-row">
+          <label for="email" class="sr-only">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn primary">Subscribe</button>
+        </div>
+        <!-- Honeypot (should stay empty) -->
+        <input type="text" name="website" class="hp" autocomplete="off" tabindex="-1" aria-hidden="true">
+        <input type="hidden" name="tag" value="site-general">
+        <input type="hidden" id="ts" name="timestamp" value="">
+      </form>
+      <p class="fineprint">We use Buttondown. You’ll receive a confirmation email (double opt‑in).</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Your Company. All rights reserved.</small>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Anti-bot helpers for the newsletter form
+    const ts = document.getElementById('ts'); if (ts) ts.value = Date.now();
+    function newsletterSubmit(e){
+      const now = Date.now();
+      const elapsed = now - parseInt(ts.value||0, 10);
+      const hp = document.querySelector('input.hp');
+      if (hp && hp.value.trim() !== '') return false; // bot filled honeypot
+      if (elapsed < 3000) { alert('Please wait a moment and try again.'); return false; }
+      const btn = e.target.querySelector('button[type="submit"]');
+      if (btn){ btn.disabled = true; btn.textContent = 'Submitting...'; }
+      return true;
+    }
+  </script>
+</body>
+</html>
