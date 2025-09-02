@@ -64,3 +64,54 @@ ${notes}
     window.location.href = `mailto:contact@codexone.io?subject=${subject}&body=${body}`;
   });
 }
+
+// Investor form: mailto + silent Buttondown capture
+(function(){
+  const form = document.getElementById('investor-form');
+  if(!form) return;
+
+  // timing start
+  const startedAt = Date.now();
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+
+    // honeypot + timing guard
+    const hp = (data.get('company_website') || '').toString().trim();
+    const tooFast = (Date.now() - startedAt) < 2000;
+    if (hp !== '' || tooFast) { form.reset(); return; }
+
+    // collect fields
+    const name  = (data.get('name')  || '').toString().trim();
+    const firm  = (data.get('firm')  || '').toString().trim();
+    const role  = (data.get('role')  || '').toString().trim();
+    const email = (data.get('email') || '').toString().trim();
+    const notes = (data.get('notes') || '').toString().trim();
+
+    // 1) Silent subscribe to Buttondown (email + tags only)
+    const bdForm  = document.getElementById('bd-shadow');
+    const bdEmail = document.getElementById('bd-shadow-email');
+    if (bdForm && bdEmail && email) {
+      bdEmail.value = email;
+      try { bdForm.submit(); } catch(_) {}
+    }
+
+    // 2) Your existing mailto flow (includes full details)
+    const subject = encodeURIComponent('Teaser request — Investor Intro');
+    const body = encodeURIComponent(
+`Hi CodexOne,
+
+Name: ${name}
+Firm: ${firm}
+Role: ${role}
+Email: ${email}
+
+Notes:
+${notes}
+
+— via codexone.io`
+    );
+    window.location.href = `mailto:contact@codexone.io?subject=${subject}&body=${body}`;
+  });
+})();

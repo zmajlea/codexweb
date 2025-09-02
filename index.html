@@ -85,16 +85,38 @@
       </div>
     </section>
 
-    <section id="news" class="cta">
-      <div class="container">
-        <h2>Get product updates & the teaser</h2>
-        <p class="section-copy">Leave us a note and we’ll send the 1‑pager plus launch updates.</p>
-        <div class="hero-ctas">
-          
-          <a class="btn ghost" href="investors.html">Investors</a>
-        </div>
-      </div>
-    </section>
+	<section id="news" class="cta">
+	  <div class="container">
+		<div class="section-intro">
+		  <h2>Get product updates &amp; the teaser</h2>
+		  <p class="section-copy">Leave us a note and we’ll send the 1-pager plus launch updates.</p>
+		</div>
+
+		<div class="cta-actions">
+		  <form class="subscribe"
+				method="post"
+				action="https://buttondown.com/api/emails/embed-subscribe/arruti"
+				target="_blank">
+			<label class="sr-only" for="bd-email">Email</label>
+			<input id="bd-email" type="email" name="email" placeholder="Introduce your email" required>
+
+			<!-- optional segmentation -->
+			<input type="hidden" name="tag" value="website">
+			<input type="hidden" name="tag" value="hero">
+
+			<!-- honeypot -->
+			<div class="hp-field" aria-hidden="true">
+			  <label>Leave this empty
+				<input type="text" name="company_website" tabindex="-1" autocomplete="off">
+			  </label>
+			</div>
+			<input type="hidden" name="form_started_at" id="form_started_at">
+
+			<button class="btn primary" type="submit">Get updates</button>
+		  </form>
+		</div>
+	  </div>
+	</section>
   </main>
 
   <footer class="site-footer">
