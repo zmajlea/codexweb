@@ -6,7 +6,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const el = document.getElementById(id);
     if(el){
       e.preventDefault();
-      window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 64, behavior:'smooth'});
+      window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior:'smooth'});
       const navToggle = document.getElementById('nav-toggle');
       if(navToggle) navToggle.checked = false;
     }
